@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasindya Chavindee | IT Undergraduate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #4d44db;
+            --secondary: #2f2e41;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --accent: #ff6584;
+            --gradient: linear-gradient(135deg, #6c63ff 0%, #ff6584 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Header/Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -4px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 10rem 5% 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(108, 99, 255, 0.4);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .personal-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .info-item i {
+            color: var(--primary);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skills-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            background: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .project-date {
+            display: block;
+            color: #6c757d;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: color 0.3s;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary-dark);
+        }
+        
+        /* Certificates Section */
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .certificate-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .certificate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certificate-date {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+        
+        .certificate-issuer {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .certificate-link {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .certificate-link:hover {
+            color: var(--primary-dark);
+        }
+         
+        
+        
+
+
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 5rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 8rem;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            
+            .hero-btns {
+                justify-content: center;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .personal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .projects-grid, .certificates-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+
+
+        /* Experience Section Styles */
+.experience-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.experience-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.experience-image {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: -2rem -2rem 1rem -2rem;
+    background: white;
+    border-radius: 16px 16px 0 0;
+}
+
+.experience-image img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.experience-content {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.experience-date {
+    display: block;
+    color: var(--primary);
+    font-weight: 500;
+    margin: 0.5rem 0;
+}
+
+.experience-company {
+    color: #6c757d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.experience-details {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.experience-details li {
+    margin-bottom: 0.5rem;
+}
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i> Pasindya
+            </a>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Pasindya Chavindee</h1>
+            <h2>IT Undergraduate | Full Stack Developer</h2>
+            <p>I'm a passionate second-year undergraduate at SLIIT with expertise in MERN stack, Kotlin, and mobile development. I thrive on creating innovative solutions to real-world problems.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+                <a href="PasindyaChavindee-SLIIT.pdf" download class="btn btn-outline">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Developer working">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content glass-card">
+            <div class="about-text">
+                <h3>Information Technology Undergraduate at SLIIT</h3>
+                <p>I am a 22-year-old, self-motivated second-year undergraduate student at the Sri Lanka Institute of Information Technology (SLIIT), pursuing a degree in Information Technology. I have a solid foundation in software development and mobile application design, with proficiency in Kotlin, Android Studio, and the MERN stack.</p>
+                <p>My experience includes developing various web and mobile applications, showcasing strong project management, leadership, and team collaboration skills. I am passionate about leveraging technical expertise to solve real-world problems and thrive on creating innovative solutions to make a positive impact.</p>
+                
+                <div class="personal-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>pasindyachavindi13@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <span>0712174880</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>No.08.Pubudupura, Bandaragama</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <span>July 13, 2002</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-id-card"></i>
+                        <span>200269502080</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-flag"></i>
+                        <span>Sri Lankan</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pasindya Chavindee">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="section-title">
+            <h2>My Skills</h2>
+        </div>
+        <div class="skills-container glass-card">
+            <div class="skills-category">
+                <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fab fa-react skill-icon"></i>
+                        <span>MERN Stack</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-android skill-icon"></i>
+                        <span>Kotlin</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-git-alt skill-icon"></i>
+                        <span>Version Controlling</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-php skill-icon"></i>
+                        <span>PHP</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database skill-icon"></i>
+                        <span>MySQL/MongoDB</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-java skill-icon"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python skill-icon"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-html5 skill-icon"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt skill-icon"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-code skill-icon"></i>
+                        <span>C/C++</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <h3><i class="fas fa-user-tie"></i> Soft Skills</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fas fa-brain skill-icon"></i>
+                        <span>Self Learning</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-lightbulb skill-icon"></i>
+                        <span>Creativity</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-users skill-icon"></i>
+                        <span>Teamwork</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-clock skill-icon"></i>
+                        <span>Time Management</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-flag skill-icon"></i>
+                        <span>Leadership</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-comments skill-icon"></i>
+                        <span>Effective Communication</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-search skill-icon"></i>
+                        <span>Critical Thinking</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="skills-category">
+                <h3><i class="fas fa-language"></i> Languages</h3>
+                <div class="skills-list">
+                    <div class="skill-item">
+                        <i class="fas fa-globe skill-icon"></i>
+                        <span>English (Fluent)</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-globe skill-icon"></i>
+                        <span>Sinhala (Fluent)</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-globe skill-icon"></i>
+                        <span>Tamil (Intermediate)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="section-title">
+            <h2>My Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Surfing School Management System">
+                </div>
+                <div class="project-content">
+                    <h3>Surfing School Management System</h3>
+                    <span class="project-date">SEP 2024 - OCT 2024</span>
+                    <p>Group project under ITP module where I served as the group leader. We implemented this project using MERN Stack.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Pasindya/Surfing-Project-MERN-" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Task Scheduler App">
+                </div>
+                <div class="project-content">
+                    <h3>Task Scheduler App</h3>
+                    <span class="project-date">SEP 2024 - SEP 2024</span>
+                    <p>Individual project implemented under MAD module. Built using Kotlin language & Shared Preferences with full CRUD operations.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Pasindya/MyTaskSchedulerApp" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Stock Management System">
+                </div>
+                <div class="project-content">
+                    <h3>Online Stock Management System</h3>
+                    <span class="project-date">SEP 2023 - AUG 2023</span>
+                    <p>Group project under OOP module where I implemented the Support function using Java & MySQL.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Pasindya/Online-stock-management-system" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card glass-card">
+                <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Parking System">
+                </div>
+                <div class="project-content">
+                    <h3>Online Parking System</h3>
+                    <span class="project-date">SEP 2023 - AUG 2023</span>
+                    <p>Group project where I implemented CRUD operations for the Support page using PHP.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Pasindya/Parking-System" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- Certificates Section -->
+<section id="certificates" class="section">
+    <div class="section-title">
+        <h2>My Certificates</h2>
+    </div>
+    <div class="certificates-container">
+        <div class="glass-card certificate-card">
+            <div class="certificate-image">
+                <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+            </div>
+            <div class="certificate-content">
+                <div class="certificate-header">
+                    <h3>English for IT</h3>
+                    <span class="certificate-date">Nov 2024</span>
+                </div>
+                <p class="certificate-issuer">Cisco</p>
+                <p>Certification in technical English for IT professionals.</p>
+                <a href="https://www.credly.com/badges/71ebb84f-a353-4dbf-ab66-fb3c42f4d321" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+        </div>
+        <!-- Repeat for other certificates -->
+ 
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Data Science Foundation</h3>
+                    
+                    <span class="certificate-date">Nov 2024</span>
+                </div>
+                <p class="certificate-issuer">Great Learning</p>
+                <p>Fundamentals of data science including data analysis and visualization.</p>
+                <a href="https://www.mygreatlearning.com/certificate/UVVZBXOWT" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Figma</h3>
+                    <span class="certificate-date">Dec 2024</span>
+                </div>
+                <p class="certificate-issuer">DP Education</p>
+                <p>UI/UX design using Figma tool for creating prototypes and designs.</p>
+                <a href="https://olympus.mygreatlearning.com/courses/12761/certificate" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>UI/UX Beginner</h3>
+                    <span class="certificate-date">Nov 2024</span>
+                </div>
+                <p class="certificate-issuer">Great Learning</p>
+                <p>Introduction to user interface and user experience design principles.</p>
+                <a href="https://olympus.mygreatlearning.com/courses/55928/certificate" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Web Design For Beginners</h3>
+                    <span class="certificate-date">Nov 2023</span>
+                </div>
+                <p class="certificate-issuer">University of Moratuwa</p>
+                <p>Fundamentals of web design including HTML, CSS and basic principles.</p>
+                <a href="#" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Introduction to MERN</h3>
+                    <span class="certificate-date">Dec 2023</span>
+                </div>
+                <p class="certificate-issuer">Simplilearn</p>
+                <p>Introduction to MongoDB, Express, React, and Node.js stack.</p>
+                <a href="https://simpli-web.app.link/e/ku4tqhr2fPb" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Java Programming</h3>
+                    <span class="certificate-date">Nov 2024</span>
+                </div>
+                <p class="certificate-issuer">Great Learning</p>
+                <p>Comprehensive Java programming course covering OOP concepts.</p>
+                <a href="https://olympus.mygreatlearning.com/courses/12385/certificate" target="_blank" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+            
+            <div class="glass-card certificate-card">
+                <div class="certificate-image">
+                    <img src="path-to-your-certificate-image.jpg" alt="English for IT Certificate">
+                </div>
+                <div class="certificate-header">
+                    <h3>Python for beginners</h3>
+                    <span class="certificate-date">Dec 2024</span>
+                </div>
+                <p class="certificate-issuer">University of Moratuwa</p>
+                <p>Introduction to Python programming language fundamentals.</p>
+                <a href="#" class="certificate-link">
+                    <i class="fas fa-external-link-alt"></i> View Certificate
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="section">
+        <div class="section-title">
+            <h2>My Experience</h2>
+        </div>
+        <div class="experience-container">
+            <div class="glass-card experience-card">
+                <div class="experience-image">
+                    <img src="path-to-company-logo.jpg" alt="Company Name">
+                </div>
+                <div class="experience-content">
+                    <h3>Job Position</h3>
+                    <span class="experience-date">Month Year - Present</span>
+                    <p class="experience-company">Company Name</p>
+                    <ul class="experience-details">
+                        <li>Responsibility or achievement 1</li>
+                        <li>Responsibility or achievement 2</li>
+                        <li>Responsibility or achievement 3</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="glass-card experience-card">
+                <div class="experience-image">
+                    <img src="path-to-another-company-logo.jpg" alt="Another Company">
+                </div>
+                <div class="experience-content">
+                    <h3>Internship Position</h3>
+                    <span class="experience-date">Month Year - Month Year</span>
+                    <p class="experience-company">Another Company</p>
+                    <ul class="experience-details">
+                        <li>Key learning or contribution 1</li>
+                        <li>Key learning or contribution 2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="section-title">
+            <h2>Contact Me</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info glass-card">
+                <h3>Get in Touch</h3>
+                <p>Feel free to reach out to me for any questions or opportunities. I'll get back to you as soon as possible.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:pasindyachavindi13@gmail.com">pasindyachavindi13@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <a href="tel:+94712174880">0712174880</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>No.08.Pubudupura, Bandaragama, Sri Lanka</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="margin-top: 2rem;">Follow Me</h4>
+                <div class="social-links">
+                    <a href="#" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="contact-form glass-card">
+                <form id="contactForm" action="https://formspree.io/f/pasindyachavindi13@gmail.com" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="logo" style="color: white; font-size: 1.5rem;">
+                <i class="fas fa-code"></i> Pasindya Chavindee
+            </a>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">© 2024 Pasindya Chavindee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+             
+        
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    alert('Message sent successfully! I will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                alert('There was a problem sending your message. Please try again later or contact me directly at pasindyachavindi13@gmail.com');
+                console.error('Error:', error);
+            } finally {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Responsive adjustments
+        function handleResize() {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    </script>
+</body>
+</html>
