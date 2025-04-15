@@ -495,10 +495,117 @@
         }
     }
         
+    /* Ladder Timeline Styles */
+    .ladder-container {
+        position: relative;
+        max-width: 700px;
+        margin: 3rem auto;
+        padding: 0 2rem;
+    }
+    
+    .ladder-rail {
+        position: absolute;
+        width: 4px;
+        background: linear-gradient(to bottom, var(--primary), #e0e0e0);
+        top: 0;
+        bottom: 0;
+    }
+    
+    .left-rail {
+        left: 50px;
+    }
+    
+    .right-rail {
+        right: 50px;
+    }
+    
+    .ladder-rung {
+        position: relative;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rung-date {
+        background: var(--primary);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        z-index: 2;
+    }
+    
+    .rung-content {
+        width: 80%;
+        padding: 1.5rem;
+        display: flex;
+        position: relative;
+        transition: transform 0.3s ease;
+    }
+    
+    .ladder-rung:hover .rung-content {
+        transform: translateY(-5px);
+    }
+    
+    .rung-icon {
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-right: 1.5rem;
+        flex-shrink: 0;
+    }
+    
+    .rung-details h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+    }
+    
+    .institution, .faculty, .stream {
+        margin: 0.3rem 0;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+    }
+    
+    /* Connector lines */
+    .ladder-rung:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: -2rem;
+        left: 50%;
+        width: 2px;
+        height: 2rem;
+        background: var(--primary);
+        transform: translateX(-50%);
+    }
+    
+    /* Current education highlight */
+    .current .rung-date {
+        background: var(--accent-color, #ff6b6b);
+        font-size: 1rem;
+    }
+    
+    /* Foundation education style */
+    .foundation .rung-date {
+        background: var(--secondary);
+    }
+    
+    @media (max-width: 768px) {
+        .ladder-container {
+            padding: 0 1rem;
+        }
         
+        .left-rail, .right-rail {
+            display: none;
+        }
         
-
-
+        .rung-content {
+            width: 100%;
+        }
+    }
 
         /* Contact Section */
         .contact-container {
@@ -795,6 +902,7 @@
                 <a href="#projects">Projects</a>
                 <a href="#certificates">Certificates</a>
                 <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
                 <a href="#contact">Contact</a>
             </div>
             <button class="mobile-menu-btn">
@@ -1385,7 +1493,79 @@
         </div>
     </div>
 </section>
-   
+
+<!-- Education Section - Ladder View -->
+<section id="education" class="section">
+    <div class="section-title">
+        <h2>Academic Journey</h2>
+    </div>
+    
+    <div class="ladder-container">
+        <!-- Ladder Side Rails -->
+        <div class="ladder-rail left-rail"></div>
+        <div class="ladder-rail right-rail"></div>
+        
+        <!-- Ladder Rungs -->
+        <div class="ladder-rung current">
+            <div class="rung-date">2022 - Present</div>
+            <div class="rung-content glass-card">
+                <div class="rung-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="rung-details">
+                    <h3>BSc (Hons) Information Technology</h3>
+                    <p class="institution">Sri Lanka Institute of Information Technology</p>
+                    <p class="faculty">Faculty of Computing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ladder-rung">
+            <div class="rung-date">2022</div>
+            <div class="rung-content glass-card">
+                <div class="rung-icon"><i class="fas fa-certificate"></i></div>
+                <div class="rung-details">
+                    <h3>Professional English & IT</h3>
+                    <p class="institution">Aquinas College of Higher Studies</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ladder-rung">
+            <div class="rung-date">2022</div>
+            <div class="rung-content glass-card">
+                <div class="rung-icon"><i class="fas fa-award"></i></div>
+                <div class="rung-details">
+                    <h3>Professional Certificate in Marketing</h3>
+                    <p class="institution">Sri Lanka Institute of Marketing</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ladder-rung">
+            <div class="rung-date">2019-2021</div>
+            <div class="rung-content glass-card">
+                <div class="rung-icon"><i class="fas fa-flask"></i></div>
+                <div class="rung-details">
+                    <h3>G.C.E. Advanced Level</h3>
+                    <p class="institution">Panadura Balika Vidyalaya</p>
+                    <p class="stream">Commerce Stream</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ladder-rung foundation">
+            <div class="rung-date">2010-2018</div>
+            <div class="rung-content glass-card">
+                <div class="rung-icon"><i class="fas fa-school"></i></div>
+                <div class="rung-details">
+                    <h3>G.C.E. Ordinary Level</h3>
+                    <p class="institution">Sri Sumangala Balika Maha Vidyalaya</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="section-title">
